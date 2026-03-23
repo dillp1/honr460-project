@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+"use client";
+import React from "react";
+import "./App.css";
+import {
+  AdvancedMarker,
+  APIProvider,
+  InfoWindow,
+  Map,
+  Pin,
+} from "@vis.gl/react-google-maps";
 
-function App() {
-  const [count, setCount] = useState(0)
+const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
+function GoogleMap() {
+  const position = { lat: 40.427172008800056, lng: -86.91941359425552 };
+  const [open, setOpen] = React.useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <APIProvider apiKey={mapsApiKey}>
+      <div style={{ height: "90vh", width: "90vw" }}>
+        <Map
+          zoom={15}
+          center={position}
+          mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
+        />
+        <AdvancedMarker position={position} onClick={() => setOpen(!open)}>
+          <Pin />
+        </AdvancedMarker>
+        {open && (
+          <InfoWindow position={position} onCloseClick={() => setOpen(false)}>
+            <div>
+              <h1>Honors North</h1>
+              <p>Purdue University</p>
+            </div>
+          </InfoWindow>
+        )}
+        <AdvancedMarker
+          position={{ lat: 40.424996711079196, lng: -86.92656771052967 }}
+          onClick={() => setOpen(!open)}
+        >
+          <Pin />
+        </AdvancedMarker>
+        {open && (
+          <InfoWindow
+            position={{ lat: 40.424996711079196, lng: -86.92656771052967 }}
+            onCloseClick={() => setOpen(false)}
+          >
+            <div>
+              <h1>Harrison Hall</h1>
+              <p>Purdue University</p>
+            </div>
+          </InfoWindow>
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </APIProvider>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <>
+      <div className="flex h-screen items-center justify-center">
+        <GoogleMap />
+      </div>
+    </>
+  );
+}
+
+export default App;
