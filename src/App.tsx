@@ -2,7 +2,8 @@
 import Header from "./components/header";
 import GoogleMap from "./components/GoogleMap";
 import "./App.css";
-import About from "./components/About";
+import About from "./components/about";
+import CaseStudy1 from "./components/CaseStudy1";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Header />
         <GoogleMap />
         <About />
+        <CaseStudy1 />
       </div>
     </>
   );

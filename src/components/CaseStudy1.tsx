@@ -1,15 +1,14 @@
-function About() {
+function CaseStudy1() {
   return (
     <section
-      id="about"
-      aria-label="About"
+      id="caseStudy1"
+      aria-label="caseStudy1"
       className="flex flex-col-reverse lg:flex-row justify-between items-center px-6 md:px-[75px] lg:px-[150px] gap-[40px] scroll-mt-[90px] leading-relaxed"
     >
       <div className="space-y-6">
-        {/* About Us */}
         <div className="">
           <p className="text-[40px] font-semibold leading-snug mb-2">
-            About This Page
+            Case 1 - TODO
           </p>
           <p className="text-[18px]">
             {/* TODO update the about section */}
@@ -33,4 +32,4 @@ function About() {
   );
 }
 
-export default About;
+export default CaseStudy1;
