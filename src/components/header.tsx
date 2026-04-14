@@ -5,11 +5,9 @@ function Header() {
   const headerOffset = 96;
 
   const navItems = [
-    { href: "#caseStudy1", label: "Case Study 1" },
-    { href: "#CaseStudy2", label: "Case Study 2" },
-    { href: "#CaseStudy3", label: "Case Study 3" },
-    { href: "#CaseStudy4", label: "Case Study 4" },
-    { href: "#CaseStudy5", label: "Case Study 5" },
+    { href: "#map", label: "Map" },
+    { href: "#caseStudy1", label: "Harrison Hall" },
+    { href: "#CaseStudy2", label: "Physics Building" },
   ];
 
   const scrollToSection = (href: string) => {
