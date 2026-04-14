@@ -39,6 +39,14 @@ function GoogleMap() {
       targetId: "CaseStudy2",
       buttonLabel: "Learn More",
     },
+    {
+      id: "windsor-dining-court",
+      position: { lat: 40.427223048086745, lng: -86.92106110284078 },
+      title: "Windsor Dining Court",
+      subtitle: "Purdue University",
+      targetId: "CaseStudy3",
+      buttonLabel: "Learn More",
+    },
   ];
   const [openMarkerId, setOpenMarkerId] = React.useState<string | null>(null);
 

@@ -1,4 +1,4 @@
-import { CircleQuestionMark } from "lucide-react";
+import { ChefHat } from "lucide-react";
 
 function CaseStudy3() {
   return (
@@ -11,10 +11,10 @@ function CaseStudy3() {
         <div className="">
           <div className="mb-3 flex items-center gap-3">
             <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#11182c]/8 text-[#11182c]">
-              <CircleQuestionMark className="size-6" />
+              <ChefHat className="size-6" />
             </div>
             <p className="text-[40px] leading-none font-semibold">
-              Coming Soon...
+              Windsor Dining Court
             </p>
           </div>
           <p className="text-[18px]">
