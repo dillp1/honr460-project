@@ -7,7 +7,8 @@ function Hero() {
         <div className="space-y-6">
           <div className="space-y-4">
             <h1 className="max-w-3xl text-4xl leading-tight font-semibold text-balance md:text-5xl lg:text-6xl">
-              Navigate campus spaces with clearer context before you arrive.
+              Know campus navigation{" "}
+              <span className="italic">before you arrive</span>
             </h1>
             <p className="max-w-2xl text-base leading-7 text-white/75 md:text-lg">
               Boiler Access Map is a draft accessibility guide that pairs
