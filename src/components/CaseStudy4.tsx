@@ -1,3 +1,5 @@
+import { CircleQuestionMark } from "lucide-react";
+
 function CaseStudy4() {
   return (
     <section
@@ -7,9 +9,14 @@ function CaseStudy4() {
     >
       <div className="space-y-6">
         <div className="">
-          <p className="text-[40px] font-semibold leading-snug mb-2">
-            Case 4 - TODO
-          </p>
+          <div className="mb-3 flex items-center gap-3">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#11182c]/8 text-[#11182c]">
+              <CircleQuestionMark className="size-6" />
+            </div>
+            <p className="text-[40px] leading-none font-semibold">
+              Coming Soon...
+            </p>
+          </div>
           <p className="text-[18px]">
             {/* TODO update the about section */}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae

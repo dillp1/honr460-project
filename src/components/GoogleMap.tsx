@@ -16,28 +16,20 @@ const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 function GoogleMap() {
   const markers = [
     {
-      id: "honors-north",
-      position: { lat: 40.427172008800056, lng: -86.91941359425552 },
-      title: "Honors North",
-      subtitle: "Purdue University",
-      targetId: "caseStudy1",
-      buttonLabel: "Go to Case Study 1",
-    },
-    {
       id: "harrison-hall",
       position: { lat: 40.424996711079196, lng: -86.92656771052967 },
       title: "Harrison Hall",
       subtitle: "Purdue University",
-      targetId: "caseStudy2",
-      buttonLabel: "Go to Case Study 2",
+      targetId: "caseStudy1",
+      buttonLabel: "Learn More",
     },
     {
       id: "physics-building",
       position: { lat: 40.430271072885674, lng: -86.91304065181082 },
       title: "Physics Building",
       subtitle: "Purdue University",
-      targetId: "CaseStudy3",
-      buttonLabel: "Go to Case Study 3",
+      targetId: "CaseStudy2",
+      buttonLabel: "Learn More",
     },
   ];
   const [openMarkerId, setOpenMarkerId] = React.useState<string | null>(null);
