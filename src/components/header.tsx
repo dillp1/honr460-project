@@ -91,7 +91,7 @@ function Header() {
               <a
                 key={href}
                 href={href}
-                className="py-3 text-base font-medium text-white/90 transition-colors hover:text-white"
+                className="block py-3 text-center text-base font-medium text-white/90 transition-colors hover:bg-black/20 hover:text-white"
                 onClick={(event) => {
                   event.preventDefault();
                   scrollToSection(href);
