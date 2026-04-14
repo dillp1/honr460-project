@@ -1,3 +1,5 @@
+import { Lightbulb } from "lucide-react";
+
 function About() {
   return (
     <section
@@ -8,9 +10,14 @@ function About() {
       <div className="space-y-6">
         {/* About Us */}
         <div className="">
-          <p className="text-[40px] font-semibold leading-snug mb-2">
-            About This Page
-          </p>
+          <div className="mb-3 flex items-center gap-3">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#11182c]/8 text-[#11182c]">
+              <Lightbulb className="size-6" />
+            </div>
+            <p className="text-[40px] leading-none font-semibold">
+              About The Project
+            </p>
+          </div>
           <p className="text-[18px]">
             {/* TODO update the about section */}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae
