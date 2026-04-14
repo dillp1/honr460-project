@@ -53,48 +53,52 @@ function GoogleMap() {
 
   return (
     <APIProvider apiKey={mapsApiKey}>
-      <div
-        className="w-full"
-        style={{ height: "calc(100vh - 5rem - 2rem)", maxWidth: "90vw" }}
+      <section
+        id="map"
+        aria-label="Campus map"
+        className="w-full scroll-mt-24"
+        style={{ maxWidth: "90vw" }}
       >
-        <Map
-          zoom={15}
-          center={markers[0].position}
-          mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
-        />
-        {markers.map((marker) => (
-          <React.Fragment key={marker.id}>
-            <AdvancedMarker
-              position={marker.position}
-              onClick={() =>
-                setOpenMarkerId((current) =>
-                  current === marker.id ? null : marker.id,
-                )
-              }
-            >
-              <Pin />
-            </AdvancedMarker>
-            {openMarkerId === marker.id && (
-              <InfoWindow
+        <div style={{ height: "calc(100vh - 5rem - 2rem)" }}>
+          <Map
+            zoom={15}
+            center={markers[0].position}
+            mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
+          />
+          {markers.map((marker) => (
+            <React.Fragment key={marker.id}>
+              <AdvancedMarker
                 position={marker.position}
-                onCloseClick={() => setOpenMarkerId(null)}
+                onClick={() =>
+                  setOpenMarkerId((current) =>
+                    current === marker.id ? null : marker.id,
+                  )
+                }
               >
-                <div className="flex min-w-44 flex-col items-center gap-2 text-center">
-                  <h1 className="font-bold">{marker.title}</h1>
-                  <p>{marker.subtitle}</p>
-                  <Button
-                    variant="outline"
-                    className="mx-auto"
-                    onClick={() => handleJumpToSection(marker.targetId)}
-                  >
-                    {marker.buttonLabel}
-                  </Button>
-                </div>
-              </InfoWindow>
-            )}
-          </React.Fragment>
-        ))}
-      </div>
+                <Pin />
+              </AdvancedMarker>
+              {openMarkerId === marker.id && (
+                <InfoWindow
+                  position={marker.position}
+                  onCloseClick={() => setOpenMarkerId(null)}
+                >
+                  <div className="flex min-w-44 flex-col items-center gap-2 text-center">
+                    <h1 className="font-bold">{marker.title}</h1>
+                    <p>{marker.subtitle}</p>
+                    <Button
+                      variant="outline"
+                      className="mx-auto"
+                      onClick={() => handleJumpToSection(marker.targetId)}
+                    >
+                      {marker.buttonLabel}
+                    </Button>
+                  </div>
+                </InfoWindow>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </section>
     </APIProvider>
   );
 }

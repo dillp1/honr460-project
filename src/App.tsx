@@ -1,5 +1,6 @@
 "use client";
 import Header from "./components/header";
+import Hero from "./components/Hero";
 import GoogleMap from "./components/GoogleMap";
 import "./App.css";
 import About from "./components/about";
@@ -13,8 +14,9 @@ import CaseStudy5 from "./components/CaseStudy5";
 function App() {
   return (
     <>
-      <div className="flex h-screen flex-col items-center gap-8 pt-24">
+      <div className="flex min-h-screen flex-col items-center gap-8 pt-24">
         <Header />
+        <Hero />
         <GoogleMap />
         <About />
         <CaseStudy1 />
