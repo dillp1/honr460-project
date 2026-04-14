@@ -6,14 +6,22 @@ import {
   APIProvider,
   InfoWindow,
   Map,
+  type MapCameraChangedEvent,
+  type MapCameraProps,
   Pin,
 } from "@vis.gl/react-google-maps";
 import { Button } from "./ui/button";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
+const mapCenter = { lat: 40.427254133186906, lng: -86.91946482079187 };
+
 /* TODO Add all the case studies */
 function GoogleMap() {
+  const [cameraProps, setCameraProps] = React.useState<MapCameraProps>({
+    center: mapCenter,
+    zoom: 15,
+  });
   const markers = [
     {
       id: "harrison-hall",
@@ -34,6 +42,21 @@ function GoogleMap() {
   ];
   const [openMarkerId, setOpenMarkerId] = React.useState<string | null>(null);
 
+  React.useEffect(() => {
+    const updateZoom = () => {
+      setCameraProps((current) => ({
+        ...current,
+        center: mapCenter,
+        zoom: window.innerWidth >= 1024 ? 16 : 15,
+      }));
+    };
+
+    updateZoom();
+    window.addEventListener("resize", updateZoom);
+
+    return () => window.removeEventListener("resize", updateZoom);
+  }, []);
+
   const handleJumpToSection = (targetId: string) => {
     const target = document.getElementById(targetId);
 
@@ -53,9 +76,11 @@ function GoogleMap() {
       >
         <div style={{ height: "calc(100vh - 5rem - 2rem)" }}>
           <Map
-            zoom={15}
-            center={markers[0].position}
+            {...cameraProps}
             mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
+            onCameraChanged={(event: MapCameraChangedEvent) =>
+              setCameraProps(event.detail)
+            }
           />
           {markers.map((marker) => (
             <React.Fragment key={marker.id}>
