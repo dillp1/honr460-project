@@ -21,9 +21,6 @@ function App() {
         <About />
         <CaseStudy1 />
         <CaseStudy2 />
-        <CaseStudy3 />
-        <CaseStudy4 />
-        <CaseStudy5 />
         <Footer />
       </div>
     </>
