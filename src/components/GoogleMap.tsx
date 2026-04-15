@@ -82,6 +82,9 @@ function GoogleMap() {
         className="w-full scroll-mt-24"
         style={{ maxWidth: "90vw" }}
       >
+        <p className="mb-3 text-sm font-medium text-[#11182c]/70">
+          Tap or click a pin to view building details.
+        </p>
         <div style={{ height: "calc(100vh - 5rem - 2rem)" }}>
           <Map
             {...cameraProps}
