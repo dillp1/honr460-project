@@ -10,6 +10,7 @@ import {
   type MapCameraProps,
   Pin,
 } from "@vis.gl/react-google-maps";
+import { MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -82,8 +83,9 @@ function GoogleMap() {
         className="w-full scroll-mt-24"
         style={{ maxWidth: "90vw" }}
       >
-        <p className="mb-3 text-sm font-medium text-[#11182c]/70">
-          Tap or click a pin to view building details.
+        <p className="mb-3 flex items-center gap-2 text-sm font-medium text-[#11182c]/70">
+          <MapPin className="size-4 shrink-0" aria-hidden="true" />
+          <span>Tap or click a marker to view building details.</span>
         </p>
         <div style={{ height: "calc(100vh - 5rem - 2rem)" }}>
           <Map
