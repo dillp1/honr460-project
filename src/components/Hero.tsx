@@ -12,8 +12,8 @@ function Hero() {
             </h1>
             <p className="max-w-2xl text-base leading-7 text-white/75 md:text-lg">
               Boiler Access Map is a draft accessibility guide that pairs
-              building locations with case studies, notes, and wayfinding
-              context so you can plan ahead instead of reacting on site.
+              building locations with wayfinding context so you can plan ahead
+              instead of reacting on site.
             </p>
           </div>
 
