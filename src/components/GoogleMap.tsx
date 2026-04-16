@@ -12,6 +12,7 @@ import {
 } from "@vis.gl/react-google-maps";
 import { MapPin } from "lucide-react";
 import { Button } from "./ui/button";
+import { customMapStyles } from "@/lib/mapStyles";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -98,7 +99,10 @@ function GoogleMap() {
         <div style={{ height: "calc(100vh - 5rem - 2rem)" }}>
           <Map
             {...cameraProps}
+            clickableIcons={false}
             mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
+            renderingType="RASTER"
+            styles={customMapStyles}
             onCameraChanged={(event: MapCameraChangedEvent) =>
               setCameraProps(event.detail)
             }

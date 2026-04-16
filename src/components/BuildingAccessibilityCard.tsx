@@ -17,6 +17,7 @@ import type {
   BuildingBadge,
   PrimaryTag,
 } from "@/types/accessibility";
+import { customMapStyles } from "@/lib/mapStyles";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -198,7 +199,10 @@ function BuildingAccessibilityCard({
                   defaultZoom={mapZoom}
                   gestureHandling="greedy"
                   disableDefaultUI
+                  clickableIcons={false}
                   mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
+                  renderingType="RASTER"
+                  styles={customMapStyles}
                 >
                   {building.entrances.map((entrance) => (
                     <React.Fragment key={entrance.id}>
