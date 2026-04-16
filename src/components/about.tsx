@@ -17,9 +17,20 @@ function About() {
               About The Project
             </p>
           </div>
-          <div className="flex flex-row items-center justify-center gap-6">
-            <div className="flex flex-col gap-4">
-              <p className="text-[18px]">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
+            <div className="flex min-w-0 flex-1 flex-col gap-4">
+              <div className="flex items-center gap-3 md:hidden">
+                <p className="text-[18px]">
+                  Hi! My name is Dill M., and I created this website from the
+                  ground up.
+                </p>
+                <img
+                  src="https://cdn.discordapp.com/avatars/244983930250330114/19785530ed4eff8510f2dd52dd8faecc.webp?size=240"
+                  alt="Discord Avatar"
+                  className="h-20 w-20 shrink-0 rounded-full object-cover shadow-md sm:h-24 sm:w-24"
+                />
+              </div>
+              <p className="hidden text-[18px] md:block">
                 Hi! My name is Dill M., and I created this website from the
                 ground up.
               </p>
@@ -42,11 +53,11 @@ function About() {
                 and other colleges nationwide.
               </p>
             </div>
-            <div className="flex shrink-0 justify-center lg:justify-end">
+            <div className="hidden shrink-0 md:flex md:justify-end">
               <img
                 src="https://cdn.discordapp.com/avatars/244983930250330114/19785530ed4eff8510f2dd52dd8faecc.webp?size=240"
                 alt="Discord Avatar"
-                className="rounded-full w-32 h-32 shadow-lg"
+                className="h-32 w-32 rounded-full object-cover shadow-md"
               />
             </div>
           </div>
