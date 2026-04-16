@@ -16,10 +16,10 @@ function App() {
         <Header />
         <Hero />
         <GoogleMap />
-        <About />
         <HarrisonHallCard />
         <WindsorDiningCourtCard />
         <PhysicsBuildingCard />
+        <About />
         <Footer />
       </div>
     </>
