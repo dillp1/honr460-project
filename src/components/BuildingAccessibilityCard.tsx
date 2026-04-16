@@ -1,9 +1,9 @@
 import React from "react";
 import {
   APIProvider,
+  AdvancedMarker,
   InfoWindow,
   Map,
-  Marker,
 } from "@vis.gl/react-google-maps";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -17,7 +17,7 @@ import type {
   BuildingBadge,
   PrimaryTag,
 } from "@/types/accessibility";
-import { embeddedPoiOverrideStyles } from "@/lib/mapStyles";
+import { customMapStyles } from "@/lib/mapStyles";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -107,19 +107,6 @@ type BuildingAccessibilityCardProps = {
   building: BuildingAccessibilityData;
   Icon: LucideIcon;
 };
-
-function getEntranceMarkerLabel(type: PrimaryTag) {
-  switch (type) {
-    case "ada-button":
-      return "A";
-    case "ramp":
-      return "R";
-    case "stairs":
-      return "!";
-    default:
-      return "D";
-  }
-}
 
 function BuildingAccessibilityCard({
   building,
@@ -213,21 +200,23 @@ function BuildingAccessibilityCard({
                   gestureHandling="greedy"
                   disableDefaultUI
                   clickableIcons={false}
-                  styles={embeddedPoiOverrideStyles}
+                  mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
+                  renderingType="RASTER"
+                  styles={customMapStyles}
                 >
                   {building.entrances.map((entrance) => (
                     <React.Fragment key={entrance.id}>
                       {openEntranceId === null && (
-                        <Marker
+                        <AdvancedMarker
                           position={entrance.position}
-                          label={getEntranceMarkerLabel(entrance.primaryTag)}
-                          title={entrance.name}
                           onClick={() =>
                             setOpenEntranceId((current) =>
                               current === entrance.id ? null : entrance.id,
                             )
                           }
-                        />
+                        >
+                          <EntranceMarker type={entrance.primaryTag} />
+                        </AdvancedMarker>
                       )}
                       {openEntranceId === entrance.id && (
                         <InfoWindow
