@@ -7,8 +7,8 @@ function Header() {
   const navItems = [
     { href: "#map", label: "Map" },
     { href: "#harrisonHallCard", label: "Harrison Hall" },
-    { href: "#physicsBuildingCard", label: "Physics Building" },
     { href: "#windsorDiningCourtCard", label: "Windsor Dining Court" },
+    { href: "#physicsBuildingCard", label: "Physics Building" },
   ];
 
   const scrollToSection = (href: string) => {
