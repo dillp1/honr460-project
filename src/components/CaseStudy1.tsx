@@ -157,8 +157,9 @@ function CaseStudy1() {
         <div className="mb-6 max-w-3xl space-y-4">
           <p className="text-[18px]">
             Harrison hall is a mostly-freshman residence hall with two wings and
-            8 floors per wing, each with an elevator. It has only one accessible
-            entrance hidden behind the building{" "}
+            8 floors per wing, each with two elevators, as well a service
+            elevator to navigate the main floors and basement. It has only one
+            accessible entrance hidden behind the building{" "}
             <span className="inline-block whitespace-nowrap">:(</span>
           </p>
         </div>
