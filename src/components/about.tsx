@@ -45,7 +45,10 @@ function About() {
                 the accessibility infrastructure on Purdue's campus. This
                 documentation is critical for current and prospective students,
                 faculty, and the greater community for understanding how to
-                navigate campus before they arrive, or while on campus.
+                navigate campus before they arrive, or while on campus. This
+                information could dictate decisions such as where a student
+                chooses to live, or what a person's route from
+                building-to-building might be.
               </p>
               <p className="text-[18px]">
                 Though this project is just a draft created in ~2 months, I hope
