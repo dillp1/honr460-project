@@ -18,8 +18,8 @@ function App() {
         <GoogleMap />
         <About />
         <HarrisonHallCard />
-        <PhysicsBuildingCard />
         <WindsorDiningCourtCard />
+        <PhysicsBuildingCard />
         <Footer />
       </div>
     </>
