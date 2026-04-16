@@ -14,6 +14,7 @@ export const dudleyLambertus: BuildingAccessibilityData = {
     largeScreen: 19,
     smallScreen: 18,
   },
+  badges: ["step-free", "ada-button", "elevator"],
   entrances: [
     {
       id: "wing-main",

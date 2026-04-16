@@ -14,6 +14,7 @@ export const physicsBuilding: BuildingAccessibilityData = {
     largeScreen: 19,
     smallScreen: 18,
   },
+  badges: [],
   entrances: [
 
   ],

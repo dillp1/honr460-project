@@ -14,14 +14,15 @@ export const harrisonHall: BuildingAccessibilityData = {
     largeScreen: 19,
     smallScreen: 18,
   },
+  badges: ["ramp-access", "limited-access", "elevator"],
   entrances: [
     {
       id: "harrison-north-west",
       name: "North-West Front Entrance",
       position: { lat: 40.42526485980263, lng: -86.92689358462779 },
       side: "North-West Corner",
-      primaryTag: "ada-button",
-      tags: ["Ramp", "Automatic Door", "Swipe access"],
+      primaryTag: "ramp",
+      tags: ["ADA Button", "Automatic Door", "Swipe access"],
       notes:
         "Usable approach with a downward ramp and ADA button. The entrance is tucked away between three walls of the building.",
     },

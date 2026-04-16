@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import type {
   BuildingAccessibilityData,
+  BuildingBadge,
   PrimaryTag,
 } from "@/types/accessibility";
 
@@ -46,6 +47,32 @@ const tagStyles: Record<
     bg: "#4a5565",
     text: "#f7f8fb",
     border: "#e5e9f0",
+  },
+};
+
+const badgeStyles: Record<
+  BuildingBadge,
+  { label: string; tone: PrimaryTag }
+> = {
+  "step-free": {
+    label: "Step-Free",
+    tone: "ramp",
+  },
+  "ada-button": {
+    label: "ADA Button",
+    tone: "ada-button",
+  },
+  "ramp-access": {
+    label: "Ramp Access",
+    tone: "ramp",
+  },
+  elevator: {
+    label: "Elevator",
+    tone: "standard",
+  },
+  "limited-access": {
+    label: "Limited Access",
+    tone: "stairs",
   },
 };
 
@@ -117,21 +144,48 @@ function BuildingAccessibilityCard({
       className="flex w-full flex-col px-6 md:px-[75px] lg:px-[150px] scroll-mt-[90px]"
     >
       <div className="rounded-2xl bg-[#e9eef5] p-6 md:p-8">
-        <div className="mb-6 flex items-center gap-3">
-          <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#11182c]/8 text-[#11182c]">
-            <Icon className="size-6" />
+        <div className="mb-5 space-y-3">
+          <div className="flex items-center gap-3">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#11182c]/8 text-[#11182c]">
+              <Icon className="size-6" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-[40px] leading-none font-semibold">
+                {building.title}
+              </p>
+            </div>
           </div>
-          <p className="text-[40px] leading-none font-semibold">
-            {building.title}
-          </p>
-        </div>
 
-        <div className="mb-6 max-w-3xl space-y-4">
-          {building.description.map((paragraph) => (
-            <p key={paragraph} className="text-[18px]">
-              {paragraph}
-            </p>
-          ))}
+          {building.badges?.length ? (
+            <div className="flex flex-wrap gap-2">
+              {building.badges.map((badge) => {
+                const badgeStyle = badgeStyles[badge];
+                const toneStyle = tagStyles[badgeStyle.tone];
+
+                return (
+                  <span
+                    key={badge}
+                    className="rounded-full border px-3 py-1 text-xs font-semibold tracking-[0.02em]"
+                    style={{
+                      backgroundColor: toneStyle.bg,
+                      color: toneStyle.text,
+                      borderColor: toneStyle.border,
+                    }}
+                  >
+                    {badgeStyle.label}
+                  </span>
+                );
+              })}
+            </div>
+          ) : null}
+
+          <div className="max-w-3xl space-y-4">
+            {building.description.map((paragraph) => (
+              <p key={paragraph} className="text-[18px]">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
 
         <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(320px,0.9fr)]">

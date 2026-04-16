@@ -14,6 +14,7 @@ export const windsorDiningCourt: BuildingAccessibilityData = {
     largeScreen: 19,
     smallScreen: 18,
   },
+  badges: ["ramp-access", "ada-button", "step-free"],
   entrances: [
     {
       id: "windsor-main",

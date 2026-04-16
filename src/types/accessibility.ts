@@ -1,4 +1,10 @@
 export type PrimaryTag = "ada-button" | "ramp" | "stairs" | "standard";
+export type BuildingBadge =
+  | "step-free"
+  | "ada-button"
+  | "ramp-access"
+  | "elevator"
+  | "limited-access";
 
 export type Entrance = {
   id: string;
@@ -19,5 +25,6 @@ export type BuildingAccessibilityData = {
     largeScreen?: number;
     smallScreen?: number;
   };
+  badges?: BuildingBadge[];
   entrances: Entrance[];
 };
