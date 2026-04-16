@@ -10,7 +10,10 @@ export const physicsBuilding: BuildingAccessibilityData = {
     lat: 40.43010317695767,
     lng: -86.91348513928281,
   },
-  mapZoom: 19,
+  mapZoom: {
+    largeScreen: 19,
+    smallScreen: 18,
+  },
   entrances: [
 
   ],

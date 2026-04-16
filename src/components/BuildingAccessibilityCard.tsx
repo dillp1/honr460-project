@@ -87,10 +87,28 @@ function BuildingAccessibilityCard({
   const [openEntranceId, setOpenEntranceId] = React.useState<string | null>(
     null,
   );
+  const [isLargeScreen, setIsLargeScreen] = React.useState(() =>
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true,
+  );
 
   const usedPrimaryTags = Array.from(
     new Set(building.entrances.map((entrance) => entrance.primaryTag)),
   );
+  const mapZoom =
+    (isLargeScreen
+      ? building.mapZoom?.largeScreen
+      : building.mapZoom?.smallScreen) ?? 19;
+
+  React.useEffect(() => {
+    const updateScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
 
   return (
     <section
@@ -121,8 +139,9 @@ function BuildingAccessibilityCard({
             <div className="min-h-[420px] flex-1">
               <APIProvider apiKey={mapsApiKey}>
                 <Map
+                  key={`${building.sectionId}-${isLargeScreen ? "large" : "small"}`}
                   defaultCenter={building.center}
-                  defaultZoom={building.mapZoom ?? 19}
+                  defaultZoom={mapZoom}
                   gestureHandling="greedy"
                   disableDefaultUI
                   mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}

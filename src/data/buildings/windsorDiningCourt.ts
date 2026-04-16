@@ -10,7 +10,10 @@ export const windsorDiningCourt: BuildingAccessibilityData = {
     lat: 40.42698865220964,
     lng: -86.9209784743681,
   },
-  mapZoom: 19,
+  mapZoom: {
+    largeScreen: 19,
+    smallScreen: 18,
+  },
   entrances: [
     {
       id: "windsor-main",

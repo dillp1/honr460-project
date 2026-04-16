@@ -10,7 +10,10 @@ export const dudleyLambertus: BuildingAccessibilityData = {
     lat: 40.42736909925624,
     lng: -86.91141109859164,
   },
-  mapZoom: 19,
+  mapZoom: {
+    largeScreen: 19,
+    smallScreen: 18,
+  },
   entrances: [
     {
       id: "wing-main",
