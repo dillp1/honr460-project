@@ -2,17 +2,16 @@
 
 import React from "react";
 import {
-  AdvancedMarker,
   APIProvider,
   InfoWindow,
   Map,
+  Marker,
   type MapCameraChangedEvent,
   type MapCameraProps,
-  Pin,
 } from "@vis.gl/react-google-maps";
 import { MapPin } from "lucide-react";
 import { Button } from "./ui/button";
-import { customMapStyles } from "@/lib/mapStyles";
+import { embeddedPoiOverrideStyles } from "@/lib/mapStyles";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -100,25 +99,21 @@ function GoogleMap() {
           <Map
             {...cameraProps}
             clickableIcons={false}
-            mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}
-            renderingType="RASTER"
-            styles={customMapStyles}
+            styles={embeddedPoiOverrideStyles}
             onCameraChanged={(event: MapCameraChangedEvent) =>
               setCameraProps(event.detail)
             }
           />
           {markers.map((marker) => (
             <React.Fragment key={marker.id}>
-              <AdvancedMarker
+              <Marker
                 position={marker.position}
                 onClick={() =>
                   setOpenMarkerId((current) =>
                     current === marker.id ? null : marker.id,
                   )
                 }
-              >
-                <Pin />
-              </AdvancedMarker>
+              />
               {openMarkerId === marker.id && (
                 <InfoWindow
                   position={marker.position}
