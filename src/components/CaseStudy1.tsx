@@ -158,7 +158,8 @@ function CaseStudy1() {
           <p className="text-[18px]">
             Harrison hall is a mostly-freshman residence hall with two wings and
             8 floors per wing, each with an elevator. It has only one accessible
-            entrance hidden behind the building :(
+            entrance hidden behind the building{" "}
+            <span className="inline-block whitespace-nowrap">:(</span>
           </p>
         </div>
 
@@ -266,7 +267,16 @@ function CaseStudy1() {
                           color: style.text,
                         }}
                       >
-                        {style.label}
+                        {entrance.primaryTag === "ada-button" ? (
+                          <>
+                            <span className="md:hidden">ADA</span>
+                            <span className="hidden md:inline">
+                              {style.label}
+                            </span>
+                          </>
+                        ) : (
+                          style.label
+                        )}
                       </span>
                     </div>
                     <div className="mb-3 flex flex-wrap gap-2">
