@@ -10,6 +10,7 @@ export const harrisonHall: BuildingAccessibilityData = {
     lat: 40.42506433581513,
     lng: -86.92679599596782,
   },
+  mapZoom: 19,
   entrances: [
     {
       id: "harrison-north-west",

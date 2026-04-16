@@ -9,6 +9,7 @@ function Header() {
     { href: "#harrisonHallCard", label: "Harrison Hall" },
     { href: "#windsorDiningCourtCard", label: "Windsor Dining Court" },
     { href: "#physicsBuildingCard", label: "Physics Building" },
+    { href: "#dudleyLambertusCard", label: "Dudley Lambertus" },
   ];
 
   const scrollToSection = (href: string) => {

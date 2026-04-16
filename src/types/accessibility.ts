@@ -15,5 +15,6 @@ export type BuildingAccessibilityData = {
   title: string;
   description: string[];
   center: { lat: number; lng: number };
+  mapZoom?: number;
   entrances: Entrance[];
 };

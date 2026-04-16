@@ -48,6 +48,14 @@ function GoogleMap() {
       targetId: "windsorDiningCourtCard",
       buttonLabel: "Learn More",
     },
+    {
+      id: "dudley-lambertus",
+      position: { lat: 40.42736909925624, lng: -86.91141109859164 },
+      title: "Dudley Lambertus",
+      subtitle: "Purdue University",
+      targetId: "dudleyLambertusCard",
+      buttonLabel: "Learn More",
+    },
   ];
   const [openMarkerId, setOpenMarkerId] = React.useState<string | null>(null);
 

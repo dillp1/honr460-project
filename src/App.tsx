@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import HarrisonHallCard from "./components/HarrisonHallCard";
 import PhysicsBuildingCard from "./components/PhysicsBuildingCard";
 import WindsorDiningCourtCard from "./components/WindsorDiningCourtCard";
+import DudleyLambertusCard from "./components/DudleyLambertusCard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <HarrisonHallCard />
         <WindsorDiningCourtCard />
         <PhysicsBuildingCard />
+        <DudleyLambertusCard />
         <About />
         <Footer />
       </div>

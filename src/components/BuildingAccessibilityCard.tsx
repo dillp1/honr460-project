@@ -122,7 +122,7 @@ function BuildingAccessibilityCard({
               <APIProvider apiKey={mapsApiKey}>
                 <Map
                   defaultCenter={building.center}
-                  defaultZoom={19}
+                  defaultZoom={building.mapZoom ?? 19}
                   gestureHandling="greedy"
                   disableDefaultUI
                   mapId={import.meta.env.VITE_GOOGLE_MAPS_MAP_ID}

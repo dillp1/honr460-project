@@ -8,12 +8,13 @@ export const windsorDiningCourt: BuildingAccessibilityData = {
   ],
   center: {
     lat: 40.42698865220964,
-    lng: -86.9209784743681
+    lng: -86.9209784743681,
   },
+  mapZoom: 19,
   entrances: [
     {
       id: "windsor-main",
-      name: "Main Dining Entrance",  
+      name: "Main Dining Entrance",
       position: { lat: 40.4270693687835, lng: -86.92099172862635 },
       side: "South side",
       primaryTag: "ramp",
