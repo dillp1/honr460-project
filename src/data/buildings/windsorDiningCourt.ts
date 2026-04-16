@@ -1,46 +1,35 @@
 import type { BuildingAccessibilityData } from "@/types/accessibility";
 
 export const windsorDiningCourt: BuildingAccessibilityData = {
-  sectionId: "CaseStudy3",
+  sectionId: "windsorDiningCourtCard",
   title: "Windsor Dining Court",
   description: [
-    "Dining locations need slightly different notes because a technically accessible entrance can still feel awkward if it routes people through a side door or service path.",
-    "This draft keeps the same shared UI so those differences live in the entrance notes instead of in a custom layout.",
+    "Windsor dining court is a large dining hall in the center of campus, tucked away under Windsor Residence Hall. It features a highly accessible entrance, with it's main entrance having a large ramp leading down into the dining court.",
   ],
   center: {
-    lat: 40.427223048086745,
-    lng: -86.92106110284078,
+    lat: 40.42698865220964,
+    lng: -86.9209784743681
   },
   entrances: [
     {
       id: "windsor-main",
-      name: "Main South Entrance",
-      position: { lat: 40.427068, lng: -86.921011 },
+      name: "Main Dining Entrance",  
+      position: { lat: 40.4270693687835, lng: -86.92099172862635 },
       side: "South side",
-      primaryTag: "standard",
-      tags: ["Main entry", "Dining access"],
-      notes:
-        "This marks the default public-facing entrance so users can compare it with the more accessible alternatives.",
-    },
-    {
-      id: "windsor-west-ramp",
-      name: "West Ramp Entrance",
-      position: { lat: 40.427202, lng: -86.921293 },
-      side: "West side",
       primaryTag: "ramp",
-      tags: ["Ramp", "Level landing"],
+      tags: ["Main entry", "ADA Button"],
       notes:
-        "Draft example of a side approach that is easier for a step-free route but may feel less obvious on first arrival.",
+        "This is the main entrance to the dining court, featuring a wide ramp that leads down into the dining area.",
     },
     {
-      id: "windsor-north-access",
-      name: "North Accessible Entrance",
-      position: { lat: 40.427391, lng: -86.921066 },
-      side: "North side",
-      primaryTag: "ada-button",
-      tags: ["ADA button", "Automatic Door", "Swipe access"],
+      id: "windsor-west-stairs",
+      name: "West Stairs Entrance",
+      position: { lat: 40.426960905864995, lng: -86.92111322599352 },
+      side: "West side",
+      primaryTag: "stairs",
+      tags: ["Stairs"],
       notes:
-        "Placeholder for an accessible entry that combines an opener with card access during limited hours.",
+        "This entrance shares the same air-lock as the accessible main entrance. Navigating to the main accessible entrance is only a few steps north.",
     },
   ],
 };

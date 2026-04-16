@@ -1,7 +1,7 @@
 import type { BuildingAccessibilityData } from "@/types/accessibility";
 
 export const harrisonHall: BuildingAccessibilityData = {
-  sectionId: "caseStudy1",
+  sectionId: "harrisonHallCard",
   title: "Harrison Hall",
   description: [
     "Harrison hall is a mostly-freshman residence hall with two wings and 8 floors per wing, each with two elevators, as well a service elevator to navigate the main floors and basement. It has only one accessible entrance tucked behind the building.",

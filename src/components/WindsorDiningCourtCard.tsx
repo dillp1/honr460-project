@@ -2,10 +2,13 @@ import { ChefHat } from "lucide-react";
 import BuildingAccessibilityCard from "./BuildingAccessibilityCard";
 import { windsorDiningCourt } from "@/data/buildings/windsorDiningCourt";
 
-function CaseStudy3() {
+function WindsorDiningCourtCard() {
   return (
-    <BuildingAccessibilityCard building={windsorDiningCourt} Icon={ChefHat} />
+    <BuildingAccessibilityCard
+      building={windsorDiningCourt}
+      Icon={ChefHat}
+    />
   );
 }
 
-export default CaseStudy3;
+export default WindsorDiningCourtCard;

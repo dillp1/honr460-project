@@ -4,10 +4,10 @@ import Hero from "./components/Hero";
 import GoogleMap from "./components/GoogleMap";
 import "./App.css";
 import About from "./components/about";
-import CaseStudy1 from "./components/CaseStudy1";
 import Footer from "./components/Footer";
-import CaseStudy2 from "./components/CaseStudy2";
-import CaseStudy3 from "./components/CaseStudy3";
+import HarrisonHallCard from "./components/HarrisonHallCard";
+import PhysicsBuildingCard from "./components/PhysicsBuildingCard";
+import WindsorDiningCourtCard from "./components/WindsorDiningCourtCard";
 
 function App() {
   return (
@@ -17,9 +17,9 @@ function App() {
         <Hero />
         <GoogleMap />
         <About />
-        <CaseStudy1 />
-        <CaseStudy2 />
-        <CaseStudy3 />
+        <HarrisonHallCard />
+        <PhysicsBuildingCard />
+        <WindsorDiningCourtCard />
         <Footer />
       </div>
     </>

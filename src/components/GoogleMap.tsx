@@ -29,7 +29,7 @@ function GoogleMap() {
       position: { lat: 40.424996711079196, lng: -86.92656771052967 },
       title: "Harrison Hall",
       subtitle: "Purdue University",
-      targetId: "caseStudy1",
+      targetId: "harrisonHallCard",
       buttonLabel: "Learn More",
     },
     {
@@ -37,7 +37,7 @@ function GoogleMap() {
       position: { lat: 40.430271072885674, lng: -86.91304065181082 },
       title: "Physics Building",
       subtitle: "Purdue University",
-      targetId: "CaseStudy2",
+      targetId: "physicsBuildingCard",
       buttonLabel: "Learn More",
     },
     {
@@ -45,7 +45,7 @@ function GoogleMap() {
       position: { lat: 40.427223048086745, lng: -86.92106110284078 },
       title: "Windsor Dining Court",
       subtitle: "Purdue University",
-      targetId: "CaseStudy3",
+      targetId: "windsorDiningCourtCard",
       buttonLabel: "Learn More",
     },
   ];
