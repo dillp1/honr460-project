@@ -21,7 +21,7 @@ function Footer() {
         </svg>
         <span>by</span>
         <a
-          href="https://dillp1.github.io"
+          href="https://github.com/dillp1"
           target="_blank"
           rel="noreferrer"
           className="font-medium text-white underline decoration-white/30 underline-offset-4 transition-colors hover:text-white"
