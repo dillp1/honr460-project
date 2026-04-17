@@ -12,73 +12,15 @@ import {
   DoorOpen,
   TriangleAlert,
 } from "lucide-react";
-import type {
-  BuildingAccessibilityData,
-  BuildingBadge,
-  PrimaryTag,
-} from "@/types/accessibility";
+import type { BuildingAccessibilityData, PrimaryTag } from "@/types/accessibility";
+import AccessibilityBadge from "./AccessibilityBadge";
+import { tagMeta } from "@/lib/accessibilityMeta";
 import { customMapStyles } from "@/lib/mapStyles";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
-const tagStyles: Record<
-  PrimaryTag,
-  { label: string; bg: string; text: string; border: string }
-> = {
-  "ada-button": {
-    label: "ADA button",
-    bg: "#123d35",
-    text: "#effaf7",
-    border: "#d0efe6",
-  },
-  ramp: {
-    label: "Ramp",
-    bg: "#17406d",
-    text: "#eef6ff",
-    border: "#d6e8ff",
-  },
-  stairs: {
-    label: "Stairs",
-    bg: "#7a2e1d",
-    text: "#fff3ef",
-    border: "#ffd9cf",
-  },
-  standard: {
-    label: "Standard",
-    bg: "#4a5565",
-    text: "#f7f8fb",
-    border: "#e5e9f0",
-  },
-};
-
-const badgeStyles: Record<
-  BuildingBadge,
-  { label: string; tone: PrimaryTag }
-> = {
-  "step-free": {
-    label: "Step-Free",
-    tone: "ramp",
-  },
-  "ada-button": {
-    label: "ADA Button",
-    tone: "ada-button",
-  },
-  "ramp-access": {
-    label: "Ramp Access",
-    tone: "ramp",
-  },
-  elevator: {
-    label: "Elevator",
-    tone: "standard",
-  },
-  "limited-access": {
-    label: "Limited Access",
-    tone: "stairs",
-  },
-};
-
 function EntranceMarker({ type }: { type: PrimaryTag }) {
-  const style = tagStyles[type];
+  const style = tagMeta[type];
   const Icon =
     type === "ada-button"
       ? Accessibility
@@ -159,24 +101,9 @@ function BuildingAccessibilityCard({
 
           {building.badges?.length ? (
             <div className="flex flex-wrap gap-2">
-              {building.badges.map((badge) => {
-                const badgeStyle = badgeStyles[badge];
-                const toneStyle = tagStyles[badgeStyle.tone];
-
-                return (
-                  <span
-                    key={badge}
-                    className="rounded-full border px-3 py-1 text-xs font-semibold tracking-[0.02em]"
-                    style={{
-                      backgroundColor: toneStyle.bg,
-                      color: toneStyle.text,
-                      borderColor: toneStyle.border,
-                    }}
-                  >
-                    {badgeStyle.label}
-                  </span>
-                );
-              })}
+              {building.badges.map((badge) => (
+                <AccessibilityBadge key={badge} badge={badge} />
+              ))}
             </div>
           ) : null}
 
@@ -250,7 +177,7 @@ function BuildingAccessibilityCard({
             <div className="border-t border-[#11182c]/10 px-4 py-3">
               <div className="flex w-fit flex-wrap gap-1.5">
                 {usedPrimaryTags.map((type) => {
-                  const style = tagStyles[type];
+                  const style = tagMeta[type];
 
                   return (
                     <div
@@ -274,7 +201,7 @@ function BuildingAccessibilityCard({
             <p className="mb-4 text-lg font-semibold">Entrances</p>
             <div className="space-y-3">
               {building.entrances.map((entrance) => {
-                const style = tagStyles[entrance.primaryTag];
+                const style = tagMeta[entrance.primaryTag];
 
                 return (
                   <button

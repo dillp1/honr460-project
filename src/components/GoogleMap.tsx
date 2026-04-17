@@ -11,14 +11,18 @@ import {
   Pin,
 } from "@vis.gl/react-google-maps";
 import { MapPin } from "lucide-react";
+import { harrisonHall } from "@/data/buildings/harrisonHall";
+import { physicsBuilding } from "@/data/buildings/physicsBuilding";
+import { windsorDiningCourt } from "@/data/buildings/windsorDiningCourt";
+import { dudleyLambertus } from "@/data/buildings/dudleyLambertus";
 import { Button } from "./ui/button";
+import AccessibilityBadge from "./AccessibilityBadge";
 import { customMapStyles } from "@/lib/mapStyles";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
 const mapCenter = { lat: 40.427254133186906, lng: -86.91946482079187 };
 
-/* TODO Add all the case studies */
 function GoogleMap() {
   const [cameraProps, setCameraProps] = React.useState<MapCameraProps>({
     center: mapCenter,
@@ -31,7 +35,8 @@ function GoogleMap() {
       title: "Harrison Hall",
       subtitle: "Purdue University",
       targetId: "harrisonHallCard",
-      buttonLabel: "Learn More",
+      buttonLabel: "View Guide",
+      building: harrisonHall,
     },
     {
       id: "physics-building",
@@ -39,7 +44,8 @@ function GoogleMap() {
       title: "Physics Building",
       subtitle: "Purdue University",
       targetId: "physicsBuildingCard",
-      buttonLabel: "Learn More",
+      buttonLabel: "View Guide",
+      building: physicsBuilding,
     },
     {
       id: "windsor-dining-court",
@@ -47,7 +53,8 @@ function GoogleMap() {
       title: "Windsor Dining Court",
       subtitle: "Purdue University",
       targetId: "windsorDiningCourtCard",
-      buttonLabel: "Learn More",
+      buttonLabel: "View Guide",
+      building: windsorDiningCourt,
     },
     {
       id: "dudley-lambertus",
@@ -55,7 +62,8 @@ function GoogleMap() {
       title: "Dudley Lambertus",
       subtitle: "Purdue University",
       targetId: "dudleyLambertusCard",
-      buttonLabel: "Learn More",
+      buttonLabel: "View Guide",
+      building: dudleyLambertus,
     },
   ];
   const [openMarkerId, setOpenMarkerId] = React.useState<string | null>(null);
@@ -124,12 +132,34 @@ function GoogleMap() {
                   position={marker.position}
                   onCloseClick={() => setOpenMarkerId(null)}
                 >
-                  <div className="flex min-w-44 flex-col items-center gap-2 text-center">
-                    <h1 className="font-bold">{marker.title}</h1>
-                    <p>{marker.subtitle}</p>
+                  <div className="flex min-w-56 flex-col gap-3 text-left">
+                    <div className="space-y-1">
+                      <h1 className="font-bold">{marker.title}</h1>
+                      <p className="text-sm text-[#11182c]/70">
+                        {marker.subtitle}
+                      </p>
+                    </div>
+                    {marker.building.badges?.length ? (
+                      <div className="flex flex-wrap gap-2">
+                        {marker.building.badges.slice(0, 3).map((badge) => (
+                          <AccessibilityBadge
+                            key={badge}
+                            badge={badge}
+                            size="sm"
+                          />
+                        ))}
+                      </div>
+                    ) : null}
+                    <p className="text-sm text-[#11182c]/80">
+                      {marker.building.entrances.length > 0
+                        ? `${marker.building.entrances.length} mapped entrance${
+                            marker.building.entrances.length === 1 ? "" : "s"
+                          }`
+                        : "Accessibility details are still being documented."}
+                    </p>
                     <Button
                       variant="outline"
-                      className="mx-auto"
+                      className="w-full"
                       onClick={() => handleJumpToSection(marker.targetId)}
                     >
                       {marker.buttonLabel}
