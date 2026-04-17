@@ -15,6 +15,7 @@ import { harrisonHall } from "@/data/buildings/harrisonHall";
 import { physicsBuilding } from "@/data/buildings/physicsBuilding";
 import { windsorDiningCourt } from "@/data/buildings/windsorDiningCourt";
 import { dudleyLambertus } from "@/data/buildings/dudleyLambertus";
+import { honorsSouth } from "@/data/buildings/honorsSouth";
 import { Button } from "./ui/button";
 import AccessibilityBadge from "./AccessibilityBadge";
 import { customMapStyles } from "@/lib/mapStyles";
@@ -64,6 +65,15 @@ function GoogleMap() {
       targetId: "dudleyLambertusCard",
       buttonLabel: "View Guide",
       building: dudleyLambertus,
+    },
+    {
+      id: "honors-south",
+      position: { lat: 40.425391239413756, lng: -86.91937540697727 },
+      title: "Honors College & Residences South",
+      subtitle: "Purdue University",
+      targetId: "honorsSouthCard",
+      buttonLabel: "View Guide",
+      building: honorsSouth,
     },
   ];
   const [openMarkerId, setOpenMarkerId] = React.useState<string | null>(null);
