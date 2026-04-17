@@ -9,6 +9,7 @@ import HarrisonHallCard from "./components/HarrisonHallCard";
 import PhysicsBuildingCard from "./components/PhysicsBuildingCard";
 import WindsorDiningCourtCard from "./components/WindsorDiningCourtCard";
 import DudleyLambertusCard from "./components/DudleyLambertusCard";
+import HonorsSouthCard from "./components/HonorsSouth";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <WindsorDiningCourtCard />
         <PhysicsBuildingCard />
         <DudleyLambertusCard />
+        <HonorsSouthCard />
         <About />
         <Footer />
       </div>
