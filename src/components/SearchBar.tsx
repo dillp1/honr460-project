@@ -50,15 +50,15 @@ export function SearchBar() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="relative w-64">
+      <div className="relative w-full md:w-64">
         <Input
           type="search"
-          placeholder="Search buildings..."
+          placeholder="Search..."
           readOnly
           onClick={() => setOpen(true)}
-          className="w-full cursor-pointer pr-14 bg-white/10 border-white/20 text-white placeholder:text-white/50 hover:bg-white/15 transition-colors"
+          className="w-full cursor-pointer pr-10 md:pr-14 bg-white/10 border-white/20 text-white placeholder:text-white/50 hover:bg-white/15 transition-colors h-10 md:h-auto"
         />
-        <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 select-none rounded border bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground bg-white/10 border-white/20 text-white/60">
+        <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 select-none rounded border bg-muted px-1.5 py-0.5 text-xs font-medium text-muted-foreground bg-white/10 border-white/20 text-white/60 hidden md:inline-flex">
           ⌘F
         </kbd>
       </div>
