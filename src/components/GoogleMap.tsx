@@ -12,7 +12,6 @@ import {
 } from "@vis.gl/react-google-maps";
 import { MapPin } from "lucide-react";
 import { harrisonHall } from "@/data/buildings/harrisonHall";
-import { physicsBuilding } from "@/data/buildings/physicsBuilding";
 import { windsorDiningCourt } from "@/data/buildings/windsorDiningCourt";
 import { dudleyLambertus } from "@/data/buildings/dudleyLambertus";
 import { honorsSouth } from "@/data/buildings/honorsSouth";
@@ -38,15 +37,6 @@ function GoogleMap() {
       targetId: "harrisonHallCard",
       buttonLabel: "View Guide",
       building: harrisonHall,
-    },
-    {
-      id: "physics-building",
-      position: { lat: 40.430271072885674, lng: -86.91304065181082 },
-      title: "Physics Building",
-      subtitle: "Purdue University",
-      targetId: "physicsBuildingCard",
-      buttonLabel: "View Guide",
-      building: physicsBuilding,
     },
     {
       id: "windsor-dining-court",

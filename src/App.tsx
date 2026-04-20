@@ -6,7 +6,6 @@ import "./App.css";
 import About from "./components/about";
 import Footer from "./components/Footer";
 import HarrisonHallCard from "./components/HarrisonHallCard";
-import PhysicsBuildingCard from "./components/PhysicsBuildingCard";
 import WindsorDiningCourtCard from "./components/WindsorDiningCourtCard";
 import DudleyLambertusCard from "./components/DudleyLambertusCard";
 import HonorsSouthCard from "./components/HonorsSouth";
@@ -20,7 +19,6 @@ function App() {
         <GoogleMap />
         <HarrisonHallCard />
         <WindsorDiningCourtCard />
-        <PhysicsBuildingCard />
         <DudleyLambertusCard />
         <HonorsSouthCard />
         <About />
