@@ -1,4 +1,4 @@
-import { CommandBasic } from "./CommandBasic";
+import { SearchBar } from "./SearchBar";
 
 function Header() {
   return (
@@ -12,7 +12,7 @@ function Header() {
           Boiler Access Map
         </button>
 
-        <CommandBasic />
+        <SearchBar />
       </div>
     </header>
   );

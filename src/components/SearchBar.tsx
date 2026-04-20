@@ -13,7 +13,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 
-export function CommandBasic() {
+export function SearchBar() {
   const [open, setOpen] = React.useState(false);
   const headerOffset = 96;
 
