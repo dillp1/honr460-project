@@ -250,16 +250,16 @@ function BuildingAccessibilityCard({
                 </div>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-3 xl:grid-cols-2">
                 <div className="rounded-2xl border border-[#d6e8ff] bg-[#eef6ff] p-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#17406d]/75">
                     Access Availability
                   </p>
-                  <div className="mt-2 flex items-end justify-between gap-3">
+                  <div className="mt-2 space-y-1.5">
                     <p className="text-3xl leading-none font-semibold text-[#17406d]">
                       {availabilityPercent}%
                     </p>
-                    <p className="text-right text-xs text-[#17406d]/75">
+                    <p className="text-xs text-[#17406d]/75">
                       {accessibleCount} of {totalEntrances} entrances
                     </p>
                   </div>
