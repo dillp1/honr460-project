@@ -21,7 +21,7 @@ function App() {
     <>
       <div
         className={`flex min-h-screen flex-col items-center gap-8 ${
-          isSurveyBannerVisible ? "pt-40" : "pt-24"
+          isSurveyBannerVisible ? "pt-52 md:pt-40" : "pt-24"
         }`}
       >
         <Header />
