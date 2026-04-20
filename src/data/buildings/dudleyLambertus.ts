@@ -23,6 +23,10 @@ export const dudleyLambertus: BuildingAccessibilityData = {
       side: "South-West corner",
       primaryTag: "ada-button",
       tags: ["Level Access", "Automatic Door", "Wide Doors"],
+      isAccessible: true,
+      isMainEntrance: true,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "The main entrance is accessible via a level approach and features an automatic and wide doors.",
     },
@@ -33,6 +37,10 @@ export const dudleyLambertus: BuildingAccessibilityData = {
       side: "North side",
       primaryTag: "ada-button",
       tags: ["Stairs", "Ramp", "Automatic Door", "Wide Doors"],
+      isAccessible: true,
+      isMainEntrance: true,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "Stairs and ramps are in close proximity to this entrance. This entrance doubles as an outdoor seating area, with ledges to sit on.",
     },
@@ -43,6 +51,10 @@ export const dudleyLambertus: BuildingAccessibilityData = {
       side: "East side",
       primaryTag: "ada-button",
       tags: ["Stairs", "Ramp", "Automatic Door", "Wide Doors"],
+      isAccessible: true,
+      isMainEntrance: true,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "Stairs and ramps are in close proximity to this entrance.",
     },
@@ -53,6 +65,10 @@ export const dudleyLambertus: BuildingAccessibilityData = {
       side: "South side",
       primaryTag: "ada-button",
       tags: ["Level Access", "Wide Doors"],
+      isAccessible: true,
+      isMainEntrance: false,
+      entranceVisibility: "moderate",
+      requiresDetour: false,
       notes:
         "This side entrance is accessible via a level approach and features wide doors. There are outdoor tables and chairs to the right and left of the entrance.",
     },

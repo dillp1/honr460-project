@@ -23,6 +23,10 @@ export const honorsSouth: BuildingAccessibilityData = {
       side: "North side",
       primaryTag: "ada-button",
       tags: ["Automatic Door", "Wide Doors"],
+      isAccessible: true,
+      isMainEntrance: true,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "Set of double doors with an ADA button on the right side. This entrance is typically used when going from Honors College and Residences North to South.",
     },
@@ -33,6 +37,10 @@ export const honorsSouth: BuildingAccessibilityData = {
       side: "East side",
       primaryTag: "ada-button",
       tags: ["Automatic Door", "Wide Doors"],
+      isAccessible: true,
+      isMainEntrance: false,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "A set of double doors with an ADA button on the right side. This entrance is closest to North Russell Street parking.",
     },
@@ -43,6 +51,10 @@ export const honorsSouth: BuildingAccessibilityData = {
       side: "South side",
       primaryTag: "ada-button",
       tags: ["Automatic Door", "Double Doors"],
+      isAccessible: true,
+      isMainEntrance: false,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "A set of double doors with an ADA button on the right side. This entrance will take you directly to many Honors Professor's offices.",
     },
@@ -53,6 +65,10 @@ export const honorsSouth: BuildingAccessibilityData = {
       side: "West side",
       primaryTag: "ada-button",
       tags: ["Automatic Door", "Wide Doors"],
+      isAccessible: true,
+      isMainEntrance: false,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "A set of double doors with an ADA button on the right side. This entrance leads to the same area as the East entrance.",
     },
