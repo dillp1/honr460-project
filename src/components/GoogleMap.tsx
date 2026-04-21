@@ -15,6 +15,7 @@ import { harrisonHall } from "@/data/buildings/harrisonHall";
 import { windsorDiningCourt } from "@/data/buildings/windsorDiningCourt";
 import { dudleyLambertus } from "@/data/buildings/dudleyLambertus";
 import { honorsSouth } from "@/data/buildings/honorsSouth";
+import { walc } from "@/data/buildings/walc";
 import { Button } from "./ui/button";
 import AccessibilityBadge from "./AccessibilityBadge";
 import { customMapStyles } from "@/lib/mapStyles";
@@ -65,6 +66,15 @@ function GoogleMap() {
       targetId: "honorsSouthCard",
       buttonLabel: "View Guide",
       building: honorsSouth,
+    },
+    {
+      id: "walc",
+      position: { lat: 40.42744270543608, lng: -86.91318215898515 },
+      title: "Walc",
+      subtitle: "Purdue University",
+      targetId: "walcCard",
+      buttonLabel: "View Guide",
+      building: walc,
     },
   ];
   const [openMarkerId, setOpenMarkerId] = React.useState<string | null>(null);

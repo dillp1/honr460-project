@@ -11,6 +11,7 @@ import WindsorDiningCourtCard from "./components/WindsorDiningCourtCard";
 import DudleyLambertusCard from "./components/DudleyLambertusCard";
 import HonorsSouthCard from "./components/HonorsSouth";
 import SurveyBanner from "./components/SurveyBanner";
+import WalcCard from "./components/WalcCard";
 
 function App() {
   const [isSurveyBannerVisible, setIsSurveyBannerVisible] = useState(true);
@@ -33,10 +34,11 @@ function App() {
         ) : null}
         <Hero />
         <GoogleMap />
-        <HarrisonHallCard />
-        <WindsorDiningCourtCard />
         <DudleyLambertusCard />
+        <HarrisonHallCard />
         <HonorsSouthCard />
+        <WalcCard />
+        <WindsorDiningCourtCard />
         <About />
         <Footer />
       </div>

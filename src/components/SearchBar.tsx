@@ -33,6 +33,7 @@ export function SearchBar() {
     { href: "#dudleyLambertusCard", label: "Dudley Lambertus" },
     { href: "#harrisonHallCard", label: "Harrison Hall" },
     { href: "#honorsSouthCard", label: "Honors College & Residences South" },
+    { href: "#walcCard", label: "Wilmeth Active Learning Center (WALC)" },
     { href: "#windsorDiningCourtCard", label: "Windsor Dining Court" },
   ];
 
