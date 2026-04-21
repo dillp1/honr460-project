@@ -6,6 +6,8 @@ export type BuildingBadge =
   | "elevator"
   | "limited-access";
 
+export type EntranceVisibility = "high" | "moderate" | "low";
+
 export type Entrance = {
   id: string;
   name: string;
@@ -14,6 +16,10 @@ export type Entrance = {
   primaryTag: PrimaryTag;
   tags: string[];
   notes: string;
+  isAccessible?: boolean;
+  isMainEntrance?: boolean;
+  entranceVisibility?: EntranceVisibility;
+  requiresDetour?: boolean;
 };
 
 export type BuildingAccessibilityData = {

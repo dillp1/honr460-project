@@ -23,6 +23,10 @@ export const windsorDiningCourt: BuildingAccessibilityData = {
       side: "South side",
       primaryTag: "ramp",
       tags: ["Main entry", "ADA Button"],
+      isAccessible: true,
+      isMainEntrance: true,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "This is the main entrance to the dining court, featuring a wide ramp that leads down into the dining area.",
     },
@@ -33,6 +37,10 @@ export const windsorDiningCourt: BuildingAccessibilityData = {
       side: "West side",
       primaryTag: "stairs",
       tags: ["Stairs"],
+      isAccessible: false,
+      isMainEntrance: false,
+      entranceVisibility: "high",
+      requiresDetour: false,
       notes:
         "This entrance shares the same air-lock as the accessible main entrance. Navigating to the main accessible entrance is only a few steps north.",
     },

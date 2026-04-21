@@ -10,12 +10,17 @@ import {
   Accessibility,
   ArrowUpRight,
   DoorOpen,
+  Scale,
   TriangleAlert,
 } from "lucide-react";
-import type { BuildingAccessibilityData, PrimaryTag } from "@/types/accessibility";
+import type {
+  BuildingAccessibilityData,
+  PrimaryTag,
+} from "@/types/accessibility";
 import AccessibilityBadge from "./AccessibilityBadge";
 import { tagMeta } from "@/lib/accessibilityMeta";
 import { customMapStyles } from "@/lib/mapStyles";
+import { getAccessibilityScores } from "@/lib/accessibilityScores";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -64,10 +69,41 @@ function BuildingAccessibilityCard({
   const usedPrimaryTags = Array.from(
     new Set(building.entrances.map((entrance) => entrance.primaryTag)),
   );
+  const {
+    totalEntrances,
+    accessibleCount,
+    availabilityPercent,
+    experience,
+    reflectivePrompt,
+  } = getAccessibilityScores(building);
   const mapZoom =
     (isLargeScreen
       ? building.mapZoom?.largeScreen
       : building.mapZoom?.smallScreen) ?? 19;
+  const experienceTone =
+    experience === "Equal access"
+      ? {
+          bg: "#123d35",
+          text: "#effaf7",
+          border: "#d0efe6",
+        }
+      : experience === "Accessible, but inconvenient"
+        ? {
+            bg: "#17406d",
+            text: "#eef6ff",
+            border: "#d6e8ff",
+          }
+        : experience === "Technically accessible"
+          ? {
+              bg: "#7a2e1d",
+              text: "#fff3ef",
+              border: "#ffd9cf",
+            }
+          : {
+              bg: "#4a5565",
+              text: "#f7f8fb",
+              border: "#e5e9f0",
+            };
 
   React.useEffect(() => {
     const updateScreenSize = () => {
@@ -198,60 +234,124 @@ function BuildingAccessibilityCard({
           </div>
 
           <div className="rounded-2xl border border-[#11182c]/10 bg-white p-4 md:p-5">
+            <div className="mb-4 rounded-2xl border border-[#11182c]/10 bg-[#f6f8fb] p-4">
+              <div className="mb-3 flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#11182c]/55">
+                    Accessibility Score
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-[#11182c]/70">
+                    Accessibility is both logistical and ethical: this score
+                    asks whether access is present and whether it feels equal.
+                  </p>
+                </div>
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#11182c]/8 text-[#11182c]">
+                  <Scale className="size-5" />
+                </div>
+              </div>
+
+              <div className="grid gap-3 xl:grid-cols-2">
+                <div className="rounded-2xl border border-[#d6e8ff] bg-[#eef6ff] p-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#17406d]/75">
+                    Access Availability
+                  </p>
+                  <div className="mt-2 space-y-1.5">
+                    <p className="text-3xl leading-none font-semibold text-[#17406d]">
+                      {availabilityPercent}%
+                    </p>
+                    <p className="text-xs text-[#17406d]/75">
+                      {accessibleCount} of {totalEntrances} entrances
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="rounded-2xl border p-3"
+                  style={{
+                    backgroundColor: `${experienceTone.bg}10`,
+                    borderColor: experienceTone.border,
+                  }}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#11182c]/60">
+                    Access Experience
+                  </p>
+                  <p
+                    className="mt-2 inline-flex rounded-full px-3 py-1.5 text-sm font-semibold"
+                    style={{
+                      backgroundColor: experienceTone.bg,
+                      color: experienceTone.text,
+                    }}
+                  >
+                    {experience}
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-3 text-sm leading-relaxed text-[#11182c]/78 italic">
+                {reflectivePrompt}
+              </p>
+            </div>
+
             <p className="mb-4 text-lg font-semibold">Entrances</p>
             <div className="space-y-3">
-              {building.entrances.map((entrance) => {
-                const style = tagMeta[entrance.primaryTag];
+              {building.entrances.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-[#11182c]/12 px-4 py-5 text-sm text-[#11182c]/65">
+                  Entrance details have not been added for this building yet.
+                </div>
+              ) : (
+                building.entrances.map((entrance) => {
+                  const style = tagMeta[entrance.primaryTag];
 
-                return (
-                  <button
-                    key={entrance.id}
-                    type="button"
-                    onClick={() => setOpenEntranceId(entrance.id)}
-                    className="w-full rounded-2xl border border-[#11182c]/10 p-4 text-left transition-colors hover:bg-[#f6f8fb]"
-                  >
-                    <div className="mb-3 flex items-start justify-between gap-3">
-                      <div>
-                        <p className="font-semibold">{entrance.name}</p>
-                        <p className="text-sm text-[#11182c]/65">
-                          {entrance.side}
-                        </p>
-                      </div>
-                      <span
-                        className="rounded-full px-2.5 py-1 text-xs font-semibold"
-                        style={{
-                          backgroundColor: style.bg,
-                          color: style.text,
-                        }}
-                      >
-                        {entrance.primaryTag === "ada-button" ? (
-                          <>
-                            <span className="md:hidden">ADA</span>
-                            <span className="hidden md:inline">
-                              {style.label}
-                            </span>
-                          </>
-                        ) : (
-                          style.label
-                        )}
-                      </span>
-                    </div>
-                    <div className="mb-3 flex flex-wrap gap-2">
-                      {entrance.tags.map((tag) => (
+                  return (
+                    <button
+                      key={entrance.id}
+                      type="button"
+                      onClick={() => setOpenEntranceId(entrance.id)}
+                      className="w-full rounded-2xl border border-[#11182c]/10 p-4 text-left transition-colors hover:bg-[#f6f8fb]"
+                    >
+                      <div className="mb-3 flex items-start justify-between gap-3">
+                        <div>
+                          <p className="font-semibold">{entrance.name}</p>
+                          <p className="text-sm text-[#11182c]/65">
+                            {entrance.side}
+                          </p>
+                        </div>
                         <span
-                          key={tag}
-                          className="rounded-full bg-[#11182c]/8 px-2.5 py-1 text-xs font-medium text-[#11182c]"
+                          className="rounded-full px-2.5 py-1 text-xs font-semibold"
+                          style={{
+                            backgroundColor: style.bg,
+                            color: style.text,
+                          }}
                         >
-                          {tag}
+                          {entrance.primaryTag === "ada-button" ? (
+                            <>
+                              <span className="md:hidden">ADA</span>
+                              <span className="hidden md:inline">
+                                {style.label}
+                              </span>
+                            </>
+                          ) : (
+                            style.label
+                          )}
                         </span>
-                      ))}
-                    </div>
-                    <p className="text-sm leading-relaxed text-[#11182c]/80">
-                      {entrance.notes}
-                    </p>
-                  </button>
-                );
-              })}
+                      </div>
+                      <div className="mb-3 flex flex-wrap gap-2">
+                        {entrance.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full bg-[#11182c]/8 px-2.5 py-1 text-xs font-medium text-[#11182c]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-sm leading-relaxed text-[#11182c]/80">
+                        {entrance.notes}
+                      </p>
+                    </button>
+                  );
+                })
+              )}
             </div>
           </div>
         </div>

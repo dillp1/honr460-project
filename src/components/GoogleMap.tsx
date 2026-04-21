@@ -18,6 +18,7 @@ import { honorsSouth } from "@/data/buildings/honorsSouth";
 import { Button } from "./ui/button";
 import AccessibilityBadge from "./AccessibilityBadge";
 import { customMapStyles } from "@/lib/mapStyles";
+import { getAccessibilityScores } from "@/lib/accessibilityScores";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -127,46 +128,120 @@ function GoogleMap() {
               >
                 <Pin />
               </AdvancedMarker>
-              {openMarkerId === marker.id && (
-                <InfoWindow
-                  position={marker.position}
-                  onCloseClick={() => setOpenMarkerId(null)}
-                >
-                  <div className="flex min-w-56 flex-col gap-3 text-left">
-                    <div className="space-y-1">
-                      <h1 className="font-bold">{marker.title}</h1>
-                      <p className="text-sm text-[#11182c]/70">
-                        {marker.subtitle}
-                      </p>
-                    </div>
-                    {marker.building.badges?.length ? (
-                      <div className="flex flex-wrap gap-2">
-                        {marker.building.badges.slice(0, 3).map((badge) => (
-                          <AccessibilityBadge
-                            key={badge}
-                            badge={badge}
-                            size="sm"
-                          />
-                        ))}
-                      </div>
-                    ) : null}
-                    <p className="text-sm text-[#11182c]/80">
-                      {marker.building.entrances.length > 0
-                        ? `${marker.building.entrances.length} mapped entrance${
-                            marker.building.entrances.length === 1 ? "" : "s"
-                          }`
-                        : "Accessibility details are still being documented."}
-                    </p>
-                    <Button
-                      variant="outline"
-                      className="w-full"
-                      onClick={() => handleJumpToSection(marker.targetId)}
+              {openMarkerId === marker.id &&
+                (() => {
+                  const {
+                    totalEntrances,
+                    accessibleCount,
+                    availabilityPercent,
+                    experience,
+                  } = getAccessibilityScores(marker.building);
+                  const experienceTone =
+                    experience === "Equal access"
+                      ? {
+                          bg: "#123d35",
+                          text: "#effaf7",
+                          border: "#d0efe6",
+                        }
+                      : experience === "Accessible, but inconvenient"
+                        ? {
+                            bg: "#17406d",
+                            text: "#eef6ff",
+                            border: "#d6e8ff",
+                          }
+                        : experience === "Technically accessible"
+                          ? {
+                              bg: "#7a2e1d",
+                              text: "#fff3ef",
+                              border: "#ffd9cf",
+                            }
+                          : {
+                              bg: "#4a5565",
+                              text: "#f7f8fb",
+                              border: "#e5e9f0",
+                            };
+
+                  return (
+                    <InfoWindow
+                      position={marker.position}
+                      onCloseClick={() => setOpenMarkerId(null)}
                     >
-                      {marker.buttonLabel}
-                    </Button>
-                  </div>
-                </InfoWindow>
-              )}
+                      <div className="flex min-w-64 max-w-80 flex-col gap-3 text-left">
+                        <div className="space-y-1">
+                          <h1 className="font-bold">{marker.title}</h1>
+                          <p className="text-sm text-[#11182c]/70">
+                            {marker.subtitle}
+                          </p>
+                        </div>
+                        {marker.building.badges?.length ? (
+                          <div className="flex flex-wrap gap-2">
+                            {marker.building.badges.slice(0, 3).map((badge) => (
+                              <AccessibilityBadge
+                                key={badge}
+                                badge={badge}
+                                size="sm"
+                              />
+                            ))}
+                          </div>
+                        ) : null}
+                        <div className="rounded-2xl border border-[#11182c]/10 bg-[#f6f8fb] p-3">
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#11182c]/55">
+                            Accessibility Score
+                          </p>
+                          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                            <div className="rounded-2xl border border-[#d6e8ff] bg-[#eef6ff] p-2.5">
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#17406d]/75">
+                                Availability
+                              </p>
+                              <p className="mt-1 text-xl leading-none font-semibold text-[#17406d]">
+                                {availabilityPercent}%
+                              </p>
+                              <p className="mt-1 text-[11px] text-[#17406d]/75">
+                                {accessibleCount} of {totalEntrances} entrances
+                              </p>
+                            </div>
+                            <div
+                              className="rounded-2xl border p-2.5"
+                              style={{
+                                backgroundColor: `${experienceTone.bg}10`,
+                                borderColor: experienceTone.border,
+                              }}
+                            >
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#11182c]/55">
+                                Experience
+                              </p>
+                              <p
+                                className="mt-1 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold"
+                                style={{
+                                  backgroundColor: experienceTone.bg,
+                                  color: experienceTone.text,
+                                }}
+                              >
+                                {experience}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <p className="text-sm text-[#11182c]/80">
+                          {marker.building.entrances.length > 0
+                            ? `${marker.building.entrances.length} mapped entrance${
+                                marker.building.entrances.length === 1
+                                  ? ""
+                                  : "s"
+                              }`
+                            : "Accessibility details are still being documented."}
+                        </p>
+                        <Button
+                          variant="outline"
+                          className="w-full"
+                          onClick={() => handleJumpToSection(marker.targetId)}
+                        >
+                          {marker.buttonLabel}
+                        </Button>
+                      </div>
+                    </InfoWindow>
+                  );
+                })()}
             </React.Fragment>
           ))}
         </div>
