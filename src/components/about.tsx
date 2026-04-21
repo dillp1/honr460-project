@@ -55,6 +55,17 @@ function About() {
                 that it can serve as a base for disability advocacy at Purdue
                 and other colleges nationwide.
               </p>
+              <p className="text-[18px]">
+                Read my reflection on the project, including the articles I
+                referenced during my research, and a works cited page{" "}
+                <a
+                  href="https://docs.google.com/document/d/11w7XJY5U29w3boW-XPkpkLk7E4l9pCAC9ndMj7jYbPQ/edit?usp=sharing"
+                  className="text-[18px] text-blue-500 hover:underline"
+                >
+                  here
+                </a>
+                .
+              </p>
             </div>
             <div className="hidden shrink-0 md:flex md:justify-end">
               <img
