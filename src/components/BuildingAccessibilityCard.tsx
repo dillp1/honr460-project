@@ -21,6 +21,7 @@ import AccessibilityBadge from "./AccessibilityBadge";
 import { tagMeta } from "@/lib/accessibilityMeta";
 import { customMapStyles } from "@/lib/mapStyles";
 import { getAccessibilityScores } from "@/lib/accessibilityScores";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const mapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -122,7 +123,7 @@ function BuildingAccessibilityCard({
       aria-label={`${building.title} accessibility map`}
       className="flex w-full flex-col px-6 md:px-[75px] lg:px-[150px] scroll-mt-[90px]"
     >
-      <div className="rounded-2xl bg-[#e9eef5] p-6 md:p-8">
+      <div className="rounded-md bg-[#e9eef5] p-6 md:p-8">
         <div className="mb-5 space-y-3">
           <div className="flex items-center gap-3">
             <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#11182c]/8 text-[#11182c]">
@@ -153,7 +154,7 @@ function BuildingAccessibilityCard({
         </div>
 
         <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(320px,0.9fr)]">
-          <div className="flex h-full min-h-[520px] flex-col overflow-hidden rounded-2xl border border-[#11182c]/10 bg-white">
+          <div className="flex h-full min-h-[520px] flex-col overflow-hidden rounded-md border border-[#11182c]/10 bg-white">
             <div className="min-h-[420px] flex-1">
               <APIProvider apiKey={mapsApiKey}>
                 <Map
@@ -233,8 +234,8 @@ function BuildingAccessibilityCard({
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[#11182c]/10 bg-white p-4 md:p-5">
-            <div className="mb-4 rounded-2xl border border-[#11182c]/10 bg-[#f6f8fb] p-4">
+          <div className="rounded-md border border-[#11182c]/10 bg-white p-4 md:p-5">
+            <div className="mb-4 rounded-md border border-[#11182c]/10 bg-[#f6f8fb] p-4">
               <div className="mb-3 flex items-start justify-between gap-3">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#11182c]/55">
@@ -251,7 +252,7 @@ function BuildingAccessibilityCard({
               </div>
 
               <div className="grid gap-3 xl:grid-cols-2">
-                <div className="rounded-2xl border border-[#d6e8ff] bg-[#eef6ff] p-3">
+                <div className="rounded-md border border-[#d6e8ff] bg-[#eef6ff] p-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#17406d]/75">
                     Access Availability
                   </p>
@@ -266,7 +267,7 @@ function BuildingAccessibilityCard({
                 </div>
 
                 <div
-                  className="rounded-2xl border p-3"
+                  className="rounded-md border p-3"
                   style={{
                     backgroundColor: `${experienceTone.bg}10`,
                     borderColor: experienceTone.border,
@@ -293,65 +294,72 @@ function BuildingAccessibilityCard({
             </div>
 
             <p className="mb-4 text-lg font-semibold">Entrances</p>
-            <div className="space-y-3">
-              {building.entrances.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-[#11182c]/12 px-4 py-5 text-sm text-[#11182c]/65">
-                  Entrance details have not been added for this building yet.
-                </div>
-              ) : (
-                building.entrances.map((entrance) => {
-                  const style = tagMeta[entrance.primaryTag];
+            <div>
+              <ScrollArea className="h-[420px] rounded-md border border-[#11182c]/10 bg-[#f6f8fb]/70">
+                <div className="p-3 pr-5">
+                  {building.entrances.length === 0 ? (
+                    <div className="rounded-md border border-dashed border-[#11182c]/12 bg-white px-4 py-5 text-sm text-[#11182c]/65">
+                      Entrance details have not been added for this building
+                      yet.
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      {building.entrances.map((entrance) => {
+                        const style = tagMeta[entrance.primaryTag];
 
-                  return (
-                    <button
-                      key={entrance.id}
-                      type="button"
-                      onClick={() => setOpenEntranceId(entrance.id)}
-                      className="w-full rounded-2xl border border-[#11182c]/10 p-4 text-left transition-colors hover:bg-[#f6f8fb]"
-                    >
-                      <div className="mb-3 flex items-start justify-between gap-3">
-                        <div>
-                          <p className="font-semibold">{entrance.name}</p>
-                          <p className="text-sm text-[#11182c]/65">
-                            {entrance.side}
-                          </p>
-                        </div>
-                        <span
-                          className="rounded-full px-2.5 py-1 text-xs font-semibold"
-                          style={{
-                            backgroundColor: style.bg,
-                            color: style.text,
-                          }}
-                        >
-                          {entrance.primaryTag === "ada-button" ? (
-                            <>
-                              <span className="md:hidden">ADA</span>
-                              <span className="hidden md:inline">
-                                {style.label}
-                              </span>
-                            </>
-                          ) : (
-                            style.label
-                          )}
-                        </span>
-                      </div>
-                      <div className="mb-3 flex flex-wrap gap-2">
-                        {entrance.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full bg-[#11182c]/8 px-2.5 py-1 text-xs font-medium text-[#11182c]"
+                        return (
+                          <button
+                            key={entrance.id}
+                            type="button"
+                            onClick={() => setOpenEntranceId(entrance.id)}
+                            className="w-full rounded-md border border-[#11182c]/10 p-4 text-left transition-colors hover:bg-[#f6f8fb]"
                           >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <p className="text-sm leading-relaxed text-[#11182c]/80">
-                        {entrance.notes}
-                      </p>
-                    </button>
-                  );
-                })
-              )}
+                            <div className="mb-3 flex items-start justify-between gap-3">
+                              <div>
+                                <p className="font-semibold">{entrance.name}</p>
+                                <p className="text-sm text-[#11182c]/65">
+                                  {entrance.side}
+                                </p>
+                              </div>
+                              <span
+                                className="rounded-full px-2.5 py-1 text-xs font-semibold"
+                                style={{
+                                  backgroundColor: style.bg,
+                                  color: style.text,
+                                }}
+                              >
+                                {entrance.primaryTag === "ada-button" ? (
+                                  <>
+                                    <span className="md:hidden">ADA</span>
+                                    <span className="hidden md:inline">
+                                      {style.label}
+                                    </span>
+                                  </>
+                                ) : (
+                                  style.label
+                                )}
+                              </span>
+                            </div>
+                            <div className="mb-3 flex flex-wrap gap-2">
+                              {entrance.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="rounded-md bg-[#11182c]/8 px-2.5 py-1 text-xs font-medium text-[#11182c]"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                            <p className="text-sm leading-relaxed text-[#11182c]/80">
+                              {entrance.notes}
+                            </p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </ScrollArea>
             </div>
           </div>
         </div>
